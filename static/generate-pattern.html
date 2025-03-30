@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Subtle Pattern</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #6200EA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #3700B3;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="patternCanvas" width="100" height="100"></canvas>
+    <button onclick="downloadPattern()">Download subtle-pattern.png</button>
+
+    <script>
+        // Get canvas and context
+        const canvas = document.getElementById('patternCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Define colors matching your site
+        const backgroundColor = '#121212'; // Dark background
+        const dotColor = 'rgba(26, 26, 26, 0.15)'; // #1A1A1A with 15% opacity
+
+        // Fill background
+        ctx.fillStyle = backgroundColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw dot grid
+        const dotSize = 2; // 2px dots
+        const spacing = 20; // 20px spacing
+        ctx.fillStyle = dotColor;
+
+        for (let x = 0; x < canvas.width; x += spacing) {
+            for (let y = 0; y < canvas.height; y += spacing) {
+                ctx.beginPath();
+                ctx.arc(x + dotSize / 2, y + dotSize / 2, dotSize / 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Function to download the pattern
+        function downloadPattern() {
+            const link = document.createElement('a');
+            link.download = 'subtle-pattern.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>
