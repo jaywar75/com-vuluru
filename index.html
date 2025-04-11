@@ -16,7 +16,7 @@
             --dark: #121212;
             --light: #FFFFFF;
             --gray: #F5F5F7;
-            --accent: #BB86FC; /* New accent color from gradient */
+            --accent: #BB86FC;
             --gradient: linear-gradient(135deg, #6200EA 0%, #BB86FC 100%);
         }
 
@@ -168,15 +168,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-            width: 100%;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--secondary);
-            flex-shrink: 0; /* Prevent logo from shrinking */
         }
 
         .logo span {
@@ -184,9 +181,6 @@
         }
 
         .nav-links {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
             display: flex;
             list-style: none;
             align-items: center;
@@ -195,11 +189,6 @@
         .nav-links li {
             margin: 0 1rem;
         }
-
-        .nav-links .btn-primary {
-            margin: 0; /* Remove any extra margin */
-            padding: 0.5rem 1rem; /* Match padding to other links */
-}
 
         .nav-links a {
             position: relative;
@@ -230,15 +219,22 @@
 
         /* Hero Section */
         .hero {
-            position: relative;
-            min-height: 75vh; /* Changed from height: 100vh to min-height: 60vh */
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            padding: 60px 0 30px; /* Added specific padding - 70px top for navbar, 30px bottom */
-        }
+                position: relative;
+                min-height: 75vh;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                padding: 60px 0 30px;
+                background-color: var(--dark); /* Base dark color (#121212) */
+                background-image: url('/static/images/subtle-pattern.png'), /* Subtle pattern */
+                                radial-gradient(circle at 70% 30%, var(--primary-light) 0%, transparent 70%); /* Existing gradient */
+                background-repeat: repeat, no-repeat; /* Repeat pattern, don’t repeat gradient */
+                background-size: auto, cover; /* Pattern tiles naturally, gradient covers */
+                background-position: center, center; /* Center both */
+                background-blend-mode: overlay; /* Blend pattern and gradient */
+}
 
-        .hero::before {
+        /*.hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -248,7 +244,7 @@
             background: radial-gradient(circle at 70% 30%, var(--primary-light) 0%, transparent 70%);
             opacity: 0.3;
             z-index: -1;
-        }
+        }*/
 
         .hero-content {
             max-width: 600px;
@@ -261,22 +257,11 @@
             line-height: 1.2;
         }
 
-        .hero-title span {
-            display: block;
-            color: var(--secondary);
-        }
-
         .hero-description {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             line-height: 1.6;
             color: #CCC;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
         }
 
         .hero-image {
@@ -287,14 +272,12 @@
             max-width: 700px;
             z-index: -1;
             opacity: 0.8;
-            loading: lazy;
         }
 
         /* AI Features */
         .ai-features {
-            position: relative;
             background-color: #1A1A1A;
-            margin-top: -20px; /* Added negative margin to reduce gap */
+            margin-top: -20px;
         }
 
         .features-grid {
@@ -309,7 +292,6 @@
             padding: 2rem;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            height: 100%;
         }
 
         .feature-card:hover {
@@ -329,11 +311,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: rotate(10deg);
         }
 
         .feature-title {
@@ -377,10 +354,6 @@
             flex-shrink: 0;
         }
 
-        .step-content {
-            flex: 1;
-        }
-
         .step-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
@@ -392,158 +365,11 @@
             line-height: 1.6;
         }
 
-        /* Trusted By */
-        .trusted-by {
-            background-color: #1A1A1A;
-            text-align: center;
-        }
-
-        .logos-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .client-logo {
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-            max-width: 100px;
-            loading: lazy;
-        }
-
-        .client-logo:hover {
-            filter: grayscale(0%);
-        }
-
-        /* Life at Vuluru */
-        .team {
-            background-color: var(--dark);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .team-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .team-photo {
-            width: 100%;
-            height: auto;
-            loading: lazy;
-        }
-
-        .team-info {
-            position: absolute;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            padding: 1rem;
-            background: rgba(3, 218, 198, 0.8);
-            color: var(--dark);
-            transition: bottom 0.3s ease;
-        }
-
-        .team-card:hover .team-info {
-            bottom: 0;
-        }
-
-        .fun-fact {
-            font-style: italic;
-            font-size: 0.9rem;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background-color: #1A1A1A;
-            position: relative;
-        }
-
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 70%, var(--primary-dark) 0%, transparent 70%);
-            opacity: 0.2;
-            z-index: 0;
-        }
-
-        .testimonials .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .testimonial-content {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            color: #CCC;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 1rem;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--light);
-        }
-
-        .author-info h4 {
-            margin-bottom: 0.25rem;
-        }
-
-        .author-info p {
-            font-size: 0.9rem;
-            color: #999;
-        }
-
         /* CTA Section */
         .cta-section {
             background: linear-gradient(to right, #171717, #0F0F0F);
             padding: 5rem 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-content {
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
         .cta-title {
@@ -715,33 +541,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Animated Background */
-        .animated-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .ai-pulse {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: var(--primary);
-            filter: blur(60px);
-            animation: pulse 8s infinite alternate;
-            opacity: 0.3;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.8); opacity: 0.3; }
-            100% { transform: scale(1.2); opacity: 0.5; }
-        }
-
         /* Responsive Styles */
         @media (max-width: 992px) {
             .hero-title { font-size: 2.8rem; }
@@ -752,13 +551,12 @@
         @media (max-width: 768px) {
             .hero {
                 min-height: auto;
-                padding: 100px 0 60px; /* Adjusted padding for mobile */
+                padding: 100px 0 60px;
             }
-            .hero { height: auto; padding: 8rem 0 5rem; }
             .hero-content { max-width: 100%; margin-right: 0; text-align: center; }
             .hero-btns { justify-content: center; }
             .hero-image { position: relative; width: 80%; margin: 3rem auto 0; right: 0; }
-            .nav-links { position: static; transform: none; display: none; }
+            .nav-links { display: none; }
             .mobile-menu { display: block; }
             .nav-links.active {
                 display: flex;
@@ -769,9 +567,8 @@
                 width: 100%;
                 background: rgba(18, 18, 18, 0.9);
                 padding: 1rem;
-                transform: none;
             }
-            .nav-links.active li { margin: 1rem 0; }
+            .nav-links li { margin: 1rem 0; }
             .contact-wrapper { grid-template-columns: 1fr; }
             .step { flex-direction: column; }
             .step-number { margin-bottom: 1rem; }
@@ -792,10 +589,6 @@
             <ul class="nav-links">
                 <li><a href="#features">vuluru ai.</a></li>
                 <li><a href="#how-it-works">how it works.</a></li>
-                <!--<li><a href="#trusted-by">trusted.</a></li> Added here -->
-                <!--<li><a href="#team">team.</a></li>-->
-                <!--<li><a href="#testimonials">success.</a></li>-->
-                <!-- <li><a href="#contact">contact</a></li> -->
                 <li><a href="#contact">investors.</a></li>
             </ul>
             <div class="mobile-menu">
@@ -803,30 +596,20 @@
             </div>
         </div>
     </header>
-<!-- place holder change-->
+
     <!-- Hero Section -->
     <section class="hero">
-        <div class="animated-bg">
-            <div class="ai-pulse" style="top: 20%; left: 10%;"></div>
-            <div class="ai-pulse" style="top: 60%; left: 75%;"></div>
-            <div class="ai-pulse" style="top: 80%; left: 40%;"></div>
-        </div>
         <div class="container">
-            <div class="hero-content">   
-                <h1 class="hero-title"><span>............</span></a>
-                    automation.
-                    intelligent AI.
-                    <br>future of work.</h1>
-                    
-                <p class="hero-description">finally, a business platform that adapts to changes and empowers you.
-                    vuluru doesn’t just automate business tasks, it innovates, learns, and grows with you. 
-                    </p>
-                    <div class="hero-btns">
-                        <a href="#features" class="btn btn-outline">explore</a>
-                        <a href="#" class="btn btn-primary">schedule demo</a>
-                    </div>
+            <div class="hero-content">
+                <h1 class="hero-title">Revolutionize Your Business with Intelligent AI Automation</h1>
+                <p class="hero-description">Double employee productivity, cut costs in-half, and stay ahead of your competition 
+                    with Vuluru—a platform that learns, innovates, and grows alongside your business.</p>
+                <div class="hero-btns">
+                    <a href="#features" class="btn btn-outline">explore</a>
+                    <a href="#" class="btn btn-primary">schedule demo</a>
+                </div>
             </div>
-            <!-- <img class="hero-image" src="static/images/heroes.avif" alt="AI Business Solutions" loading="lazy"> -->
+            <img class="hero-image" src="static/images/heroes.avif" alt="AI-powered business solutions in action">
         </div>
     </section>
 
@@ -839,12 +622,12 @@
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-brain"></i></div>
                     <h3 class="feature-title">Adaptive Intelligence</h3>
-                    <p class="feature-description">Our AI learns from your business patterns, anticipating needs before they arise and optimizing processes in real-time.</p>
+                    <p class="feature-description">Save time and resources with AI that predicts needs and optimizes processes in real-time.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
                     <h3 class="feature-title">Predictive Analytics</h3>
-                    <p class="feature-description">Transform raw data into actionable insights with AI-driven forecasting that helps you make smarter business decisions.</p>
+                    <p class="feature-description">Make smarter decisions with AI forecasts that boost revenue and reduce risks.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-robot"></i></div>
@@ -859,7 +642,7 @@
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3 class="feature-title">Proactive Security</h3>
-                    <p class="feature-description">Our AI constantly monitors for threats and vulnerabilities, protecting your business data with predictive defense mechanisms.</p>
+                    <p class="feature-description">Protect your business data with AI that monitors threats and vulnerabilities in real-time.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-users"></i></div>
@@ -878,198 +661,98 @@
             <div class="steps-container">
                 <div class="step">
                     <div class="step-number">01</div>
-                    <div class="step-content">
+                    <div>
                         <h3 class="step-title">discovery & assessment</h3>
                         <p class="step-description">We analyze your current systems and processes to identify key opportunities for AI enhancement, creating a customized transformation roadmap.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">02</div>
-                    <div class="step-content">
+                    <div>
                         <h3 class="step-title">intelligent integration</h3>
-                        <p class="step-description">our platform seamlessly connects with your existing infrastructure, with AI that adapts to your specific business needs and industry requirements.</p>
+                        <p class="step-description">Our platform seamlessly connects with your existing infrastructure, with AI that adapts to your specific business needs and industry requirements.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">03</div>
-                    <div class="step-content">
+                    <div>
                         <h3 class="step-title">continuous learning</h3>
-                        <p class="step-description">vuluru's AI continuously improves, learning from your business data to deliver increasingly valuable insights and automation opportunities.</p>
+                        <p class="step-description">Vuluru's AI continuously improves, learning from your business data to deliver increasingly valuable insights and automation opportunities.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">04</div>
-                    <div class="step-content">
+                    <div>
                         <h3 class="step-title">measurable results</h3>
-                        <p class="step-description">track ROI through our intuitive dashboards, with AI-powered analytics that quantify productivity gains, cost savings, and growth opportunities.</p>
+                        <p class="step-description">Track ROI through our intuitive dashboards, with AI-powered analytics that quantify productivity gains, cost savings, and growth opportunities.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Trusted By -->
-    <!-- <csection class="trusted-by section" id="trusted-by">
-        <div class="container">
-            <h2 class="section-title">trusted by</h2>
-            <div class="logos-grid">
-                <img src="/api/placeholder/100/50" alt="Client 1" class="client-logo" loading="lazy">
-                <img src="/api/placeholder/100/50" alt="Client 2" class="client-logo" loading="lazy">
-                <img src="/api/placeholder/100/50" alt="Client 3" class="client-logo" loading="lazy">
-            </div>
-        </div>
-    </section>
-    --> 
-
-    <!-- life at vuluru -->
-    <!-- <section class="team section" id="team">
-        <div class="container">
-            <h2 class="section-title">life at vuluru</h2>
-            <p class="section-subtitle">meet our fun and innovative team.</p>
-            <div class="team-grid">
-                <div class="team-card">
-                    <img src="/api/placeholder/150/150" alt="Team Member" class="team-photo" loading="lazy">
-                    <div class="team-info">
-                        <h3>Jane Doe</h3>
-                        <p class="fun-fact">Loves coding with funky socks!</p>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <img src="/api/placeholder/150/150" alt="Team Member" class="team-photo" loading="lazy">
-                    <div class="team-info">
-                        <h3>Mark Smith</h3>
-                        <p class="fun-fact">Master of epic coffee runs!</p>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <img src="/api/placeholder/150/150" alt="Team Member" class="team-photo" loading="lazy">
-                    <div class="team-info">
-                        <h3>Emma Lee</h3>
-                        <p class="fun-fact">Dances while debugging!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
-
-    <!-- testimonials -->
-    <!--<section class="testimonials section" id="testimonials">
-        <div class="container">
-            <h2 class="section-title">success unleashed</h2>
-            <p class="section-subtitle">see how vuluru is transforming businesses across industries through an intelligent AI business platform.</p>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-content">"vuluru slashed our operational costs by 35% in just three months. The AI-driven insights have boosted customer satisfaction like never before."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JD</div>
-                        <div class="author-info">
-                            <h4>Jessica Donovan</h4>
-                            <p>Operations Director, TechCorp</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-content">"thanks to vuluru’s predictive analytics, we anticipated market shifts ahead of competitors. it’s a game-changer for strategy."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">MR</div>
-                        <div class="author-info">
-                            <h4>Michael Rodriguez</h4>
-                            <p>CEO, Innovate Solutions</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-content">"vuluru AI feels like a teammate—always learning, always improving. It’s redefined our workflow."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SL</div>
-                        <div class="author-info">
-                            <h4>Sarah Liu</h4>
-                            <p>CTO, FutureSystems</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
 
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">ready to transform your business?</h2>
-                <p class="cta-description">join the next generation of innovative companies leveraging AI to gain a competitive edge.</p>
-                <a href="#" class="btn btn-primary">schedule demo</a>
-            </div>
+            <h2 class="cta-title">Ready to Unlock Your Business’s Potential?</h2>
+            <p class="cta-description">Join leading companies using Vuluru’s AI to drive growth and efficiency—schedule your demo today.</p>
+            <a href="#" class="btn btn-primary">schedule demo</a>
         </div>
     </section>
 
-    <!-- contact us -->
+    <!-- Contact Us -->
     <section class="contact section" id="contact">
         <div class="container">
             <h2 class="section-title">get in touch.</h2>
-            <p class="section-subtitle">have questions or ready to explore how vuluru can elevate your business? we're here to help.</p>
+            <p class="section-subtitle">Have questions or ready to explore how Vuluru can elevate your business? We're here to help.</p>
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
-                            <h4>visit us</h4>
-                            <p></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                         <div>
-                            <h4>email us</h4>
+                            <h4>Email Us</h4>
                             <p>info@vuluru.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-                        <div>
-                            <h4>call us</h4>
-                            <p></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-clock"></i></div>
                         <div>
-                            <h4>availability</h4>
-                            <p>monday - friday: 9AM - 6PM (est)</p>
+                            <h4>Availability</h4>
+                            <p>Monday - Friday: 9AM - 6PM (EST)</p>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
                     <form>
                         <div class="form-group">
-                            <label for="name">your name.</label>
+                            <label for="name">Your Name</label>
                             <input type="text" id="name" class="form-control" placeholder="Enter your name">
                         </div>
                         <div class="form-group">
-                            <label for="email">your email.</label>
+                            <label for="email">Your Email</label>
                             <input type="email" id="email" class="form-control" placeholder="Enter your email">
                         </div>
                         <div class="form-group">
-                            <label for="subject">subject.</label>
+                            <label for="subject">Subject</label>
                             <input type="text" id="subject" class="form-control" placeholder="Enter subject">
                         </div>
                         <div class="form-group">
-                            <label for="message">message.</label>
+                            <label for="message">Message</label>
                             <textarea id="message" class="form-control" placeholder="Your message"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Message Us.</button>
+                        <button type="submit" class="btn btn-primary">Message Us</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- footer -->
+    <!-- Footer -->
     <footer>
         <div class="container footer-container">
             <div>
                 <a href="#" class="footer-logo">by vuluru<span>.</span></a>
-                <p class="footer-desc">delivering next-generation AI solutions that redefine how businesses thrive.</p>
+                <p class="footer-desc">Delivering next-generation AI solutions that redefine how businesses thrive.</p>
                 <div class="social-links">
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
@@ -1077,31 +760,31 @@
                 </div>
             </div>
             <div>
-                <h3 class="footer-title">company.</h3>
+                <h3 class="footer-title">Company</h3>
                 <ul class="footer-links">
-                    <li><a href="#">about us</a></li>
-                    <li><a href="#">careers</a></li>
-                    <li><a href="#">blog</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
                 </ul>
             </div>
             <div>
-                <h3 class="footer-title">solutions.</h3>
+                <h3 class="footer-title">Solutions</h3>
                 <ul class="footer-links">
-                    <li><a href="#">automation</a></li>
-                    <li><a href="#">analytics</a></li>
-                    <li><a href="#">security</a></li>
+                    <li><a href="#">Automation</a></li>
+                    <li><a href="#">Analytics</a></li>
+                    <li><a href="#">Security</a></li>
                 </ul>
             </div>
             <div>
-                <h3 class="footer-title">support.</h3>
+                <h3 class="footer-title">Support</h3>
                 <ul class="footer-links">
-                    <li><a href="#">faq</a></li>
-                    <li><a href="#">contact</a></li>
-                    <li><a href="#">documentation</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Documentation</a></li>
                 </ul>
             </div>
         </div>
-        <div class="copyright">© 2025 vuluru. all rights reserved.</div>
+        <div class="copyright">© 2023 vuluru. All rights reserved.</div>
     </footer>
 
     <script>
